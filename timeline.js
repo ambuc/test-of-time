@@ -65,69 +65,56 @@ function rightMoveBozo( i ){
 }
 
 function wrongMoveBozo(){
-	alert('Sorry, wrong move.');
+	// alert('Sorry, wrong move.');
+	console.log(question);
+	$('.year-in-question').html(question.year);
+	$('.event-in-question').html(question.event);
+	// console.log(timeline.data.);
+	$('.final-score').html(timeline.data.length);
+	$('#youlost').openModal();
 	startGame();
 }
 
 function startGame(){
 	stack = _.shuffle(events);
-	var starter = stack.pop();
+
+	var starter = getNewEvent();
 
 	timeline = {'data':[starter]};
 	years.push(starter.year);
 
 	refresh(timeline);
 	newQuestion();
-	$('.hovering').hide();
 }
 
 function refresh(data){
 	var events_template = _.template( $( "#timeline_template" ).html() );
+
 	$('.timeline').html(events_template(data));
 	
 	$('a.here').click(function(){
-		// console.log('click');
 		checkDates.call(this);
 	});
-
-	// $('.historical-event').hover(function(){
-	// 	// console.log($(this).attr('data-string'));
-	// 	$('.hover_text').html($(this).attr('data-string'));
-	// });
-
-	// $('.historical-event').mouseenter(function(){
-	// 	$('.hovering').show();
-	// });
-
-	// $('.historical-event').mouseleave(function(){
-	// 	// console.log('fuck yeah');
-	// 	$('.hover_text').html('');
-	// 	$('.hovering').hide();
-	// });
 }
 
 function newQuestion(){
-	var trial = stack.pop();
-
-	while (_.contains(years, trial.year)){
-		trial = stack.pop();
-	}
-
-	question = trial
+	question = getNewEvent();
+	years.push(question.year);
 
 	$('.question').html(question.event);
 	$('.question').attr('data-year', question.year);
+}
+
+function getNewEvent(){
+	var trial = stack.pop();
+
+	while(_.isUndefined(trial) || _.isNull(trial) || _.contains(years, trial.year)){
+		trial = stack.pop();
+	}
+	return trial;
 }
 
 String.prototype.trunc = String.prototype.trunc ||
       function(n){
           return this.length>n ? this.substr(0,n-1)+'&hellip;' : this;
       };
-
-
-
-
-
-
-
-

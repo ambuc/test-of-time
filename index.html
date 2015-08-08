@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>The Test of TIme</title>
+	<title>The Test of Time</title>
 
 	<!-- oswald -->
 	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -31,7 +30,7 @@
 	<div class='row brown lighten-4'>
 		<div class='container'>
 			<div class='col s12'>
-				<h5>Sort the historical events chronologically.</h5>
+				<h5 class='flow-text'>Place the historical event chronologically in the timeline.</h5>
 			</div>
 		</div>
 	</div>
@@ -49,7 +48,7 @@
 						<div class='col s10 question'>
 						</div>
 					</div>
-		        </div>
+				</div>
 		        <!-- <span class='hide-on-small-only hovering'>
 			        <i>currently hovering:</i>
 					<div class="card-panel white lighten-5">
@@ -61,7 +60,7 @@
 							</div>
 						</div>
 			        </div>
-		        </span> -->
+			    </span> -->
 			</div>
 
 			<div class='col s12 m6 events'>
@@ -83,12 +82,12 @@
 	<script type="text/template" id="timeline_template">
 		<li class="collection-item">
 			<div class='row'>
-				<div class='col s1'>
+				<div class='col s1 button-block'>
 					<a class="" data-index = "<%=-1%>" data-year = "Infinity">
 						<i class="material-icons circle white-text">chevron_right</i>
 					</a>
 				</div>
-				<div class='col s11'>
+				<div class='col s11 event-block'>
 					<i class='grey-text'>The Present</i>
 				</div>
 			</div>
@@ -98,43 +97,64 @@
 		<% for(var i = 0; i < data.length; i++){ %> 
 			<li class="collection-item historical-event" data-string = "<%=data[i].event%>">
 				<div class='row'>
-					<div class='col s1'>
+					<div class='col s1 button-block'>
 						<a class="here" data-year="<%=data[i].year%>" data-index = "<%=i%>">
 							<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
 						</a>
 					</div>
-					<div class='col s11'>
+					<div class='col s11 event-block'>
 						<span class='eventstring'>
 							<%=data[i].event%>
 						</span>
 					</div>
 				</div>
 			</li>
-		<% } %>
+			<% } %>
 
-		<li class="collection-item">
-			
-			<div class='row'>
-				<div class='col s1'>
-					<a class="here" data-index = "<%=data.length%>" data-year = "-Infinity">
-						<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
-					</a>
+			<li class="collection-item">
+
+				<div class='row'>
+					<div class='col s1 button-block'>
+						<a class="here" data-index = "<%=data.length%>" data-year = "-Infinity">
+							<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
+						</a>
+					</div>
+					<div class='col s11 event-block'>
+						<i class='grey-text'>The Beginning of Time</i>
+					</div>
 				</div>
-				<div class='col s11'>
-					<i class='grey-text'>The Past</i>
-				</div>
+			</li>
+
+		</script>
+
+		<!-- Modal Trigger -->
+		<!-- <a class="hide waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+		<!-- Modal Structure -->
+		<div id="youlost" class="modal">
+			<div class="modal-content">
+				<h2>
+					<i class='material-icons left medium'>mood_bad</i>
+					Game Over
+				</h2>
+				<p class='flow-text'>Sorry, you lost! The event in question was <span class='event-in-question'></span>, which took place in <span class='year-in-question'></span>. Better luck next time!</p>
+				<h4>Final Score: <span class='final-score'></span></h4>
 			</div>
-		</li>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-large green white-text">
+					<i class='material-icons left'>refresh</i>
+					New Game
+				</a>
+			</div>
+		</div>
 
-	</script>
+	</body>
 
-</body>
-
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-<script src="data.js"></script>
-<script src="timeline.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+	<script src="data.js"></script>
+	<script src="timeline.js"></script>
 
 
-</html>
+	</html>

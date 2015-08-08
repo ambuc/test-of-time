@@ -8,6 +8,10 @@ h1{
 	font-family: 'Playball', cursive;
 }
 
+h5{
+	font-style: italic;
+}
+
 #header{
 	margin-bottom:0px;
 }
@@ -45,3 +49,18 @@ h1{
 .here i{
 	font-size: 1.5em !important;	
 }
+
+
+/*answers*/
+#youlost .modal-content p{
+	color: grey;
+}
+.event-in-question, .year-in-question{
+	font-style: italic !important;
+	color: black;
+}
+
+
+
+
+
