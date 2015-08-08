@@ -65,7 +65,7 @@ function rightMoveBozo( i ){
 }
 
 function wrongMoveBozo(){
-	alert('Wrong move, Bozo');
+	alert('Sorry, wrong move.');
 	startGame();
 }
 
