@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Test of TIme</title>
+
+	<!-- oswald -->
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<!-- Josefin Sans -->
+	<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+
+	<link rel="stylesheet" type="text/css" href="index.css" />
+
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+</head>
+<body>
+
+	<div class='row brown lighten-3' id='header'>
+		<div class='container'>
+			<div class='col s12'>
+				<h1 class='brown-text'>The Test of Time</h1>
+			</div>
+		</div>
+	</div>
+	
+	<div class='row brown lighten-4'>
+		<div class='container'>
+			<div class='col s12'>
+				<h5>Sort the historical events chronologically.</h5>
+			</div>
+		</div>
+	</div>
+
+	<div class='container'>
+
+		<div class='row'>
+			<div class='col s12 m6 current'>
+				<i>To Sort:</i>
+				<div class="card-panel white lighten-5">
+					<div class='row'>
+						<div class='col s2 right-align'>
+							<i class="material-icons circle grey lighten-5 grey-text">event_note</i>
+						</div>
+						<div class='col s10 question'>
+						</div>
+					</div>
+		        </div>
+			</div>
+
+			<div class='col s12 m6 events'>
+				<ul class="collection timeline">
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+	<div class='row brown lighten-4'>
+		<div class='container'>
+			<div class='col s12'>
+				<p>a game by <a href="http://julianrosenblum.com">Julian</a> and <a href="http://jbuckland.com">James</a>, built using data from Wikipedia originally scraped by <a href="http://vizgr.org/historical-events/">Daniel Hienert</a>.</p>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/template" id="timeline_template">
+		<li class="collection-item">
+			<div>
+				<i class='grey-text'>The Present</i>
+				<a class="secondary-content" data-index = "-1" data-year="Infinity">
+					<i class="material-icons circle white-text">chevron_right</i>
+				</a>
+			</div>
+		</li>
+		
+		<% for(var i = 0; i < data.length; i++){ %> 
+			<li class="collection-item">
+				<div>
+					<%=data[i].event%>
+					<a class="secondary-content" data-year="<%=data[i].year%>" data-index = "<%=i%>">
+						<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
+					</a>
+				</div>
+			</li>
+		<% } %>
+
+		<li class="collection-item">
+			<div>
+				<i class='grey-text'>The Past</i>
+				<a class="secondary-content" data-index = "<%=data.length%>" data-year = "-Infinity">
+					<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
+				</a>
+			</div>
+		</li>
+
+	</script>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+<script src="timeline.js"></script>
+
+
+</html>

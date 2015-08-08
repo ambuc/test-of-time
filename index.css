@@ -1,0 +1,43 @@
+html{
+	font-family: 'Gentium Book Basic', serif;
+}
+
+
+h1{
+	font-size: 4.2em !important;
+	font-family: 'Playball', cursive;
+}
+
+#header{
+	margin-bottom:0px;
+}
+
+.current .row{
+	margin-bottom:0px;
+}
+
+.current{
+	margin-top:15px;
+}
+
+.collection, .collection-item, .collection-header{
+	border: 0px white !important;
+}
+
+.timeline{
+	padding-top:0px;
+}
+
+.collection-item{
+	padding:5px !important;
+}
+
+.secondary-content{
+	float:left !important;
+	padding-right: 10px;
+	margin-top:-18px;
+}
+
+.secondary-content i{
+	font-size: 1.5em !important;	
+}
