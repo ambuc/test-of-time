@@ -50,6 +50,18 @@
 						</div>
 					</div>
 		        </div>
+		        <!-- <span class='hide-on-small-only hovering'>
+			        <i>currently hovering:</i>
+					<div class="card-panel white lighten-5">
+						<div class='row'>
+							<div class='col s2 right-align'>
+								<i class="material-icons circle grey lighten-5 grey-text">event_note</i>
+							</div>
+							<div class='col s10 hover_text'>
+							</div>
+						</div>
+			        </div>
+		        </span> -->
 			</div>
 
 			<div class='col s12 m6 events'>
@@ -70,31 +82,47 @@
 
 	<script type="text/template" id="timeline_template">
 		<li class="collection-item">
-			<div>
-				<i class='grey-text'>The Present</i>
-				<a class="secondary-content" data-index = "-1" data-year="Infinity">
-					<i class="material-icons circle white-text">chevron_right</i>
-				</a>
+			<div class='row'>
+				<div class='col s1'>
+					<a class="" data-index = "<%=-1%>" data-year = "Infinity">
+						<i class="material-icons circle white-text">chevron_right</i>
+					</a>
+				</div>
+				<div class='col s11'>
+					<i class='grey-text'>The Present</i>
+				</div>
 			</div>
+
 		</li>
 		
 		<% for(var i = 0; i < data.length; i++){ %> 
-			<li class="collection-item">
-				<div>
-					<%=data[i].event%>
-					<a class="secondary-content" data-year="<%=data[i].year%>" data-index = "<%=i%>">
-						<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
-					</a>
+			<li class="collection-item historical-event" data-string = "<%=data[i].event%>">
+				<div class='row'>
+					<div class='col s1'>
+						<a class="here" data-year="<%=data[i].year%>" data-index = "<%=i%>">
+							<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
+						</a>
+					</div>
+					<div class='col s11'>
+						<span class='eventstring'>
+							<%=data[i].event%>
+						</span>
+					</div>
 				</div>
 			</li>
 		<% } %>
 
 		<li class="collection-item">
-			<div>
-				<i class='grey-text'>The Past</i>
-				<a class="secondary-content" data-index = "<%=data.length%>" data-year = "-Infinity">
-					<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
-				</a>
+			
+			<div class='row'>
+				<div class='col s1'>
+					<a class="here" data-index = "<%=data.length%>" data-year = "-Infinity">
+						<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
+					</a>
+				</div>
+				<div class='col s11'>
+					<i class='grey-text'>The Past</i>
+				</div>
 			</div>
 		</li>
 

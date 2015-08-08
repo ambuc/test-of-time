@@ -78,15 +78,32 @@ function startGame(){
 
 	refresh(timeline);
 	newQuestion();
+	$('.hovering').hide();
 }
 
 function refresh(data){
 	var events_template = _.template( $( "#timeline_template" ).html() );
 	$('.timeline').html(events_template(data));
-	$('a.secondary-content').click(function(){
-		console.log('click');
+	
+	$('a.here').click(function(){
+		// console.log('click');
 		checkDates.call(this);
 	});
+
+	// $('.historical-event').hover(function(){
+	// 	// console.log($(this).attr('data-string'));
+	// 	$('.hover_text').html($(this).attr('data-string'));
+	// });
+
+	// $('.historical-event').mouseenter(function(){
+	// 	$('.hovering').show();
+	// });
+
+	// $('.historical-event').mouseleave(function(){
+	// 	// console.log('fuck yeah');
+	// 	$('.hover_text').html('');
+	// 	$('.hovering').hide();
+	// });
 }
 
 function newQuestion(){
@@ -102,7 +119,10 @@ function newQuestion(){
 	$('.question').attr('data-year', question.year);
 }
 
-
+String.prototype.trunc = String.prototype.trunc ||
+      function(n){
+          return this.length>n ? this.substr(0,n-1)+'&hellip;' : this;
+      };
 
 
 

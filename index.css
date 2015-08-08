@@ -12,7 +12,7 @@ h1{
 	margin-bottom:0px;
 }
 
-.current .row{
+.current .row, .collection .row{
 	margin-bottom:0px;
 }
 
@@ -31,16 +31,17 @@ h1{
 .collection-item{
 	padding:5px !important;
 }
-.collection-item div{
-	margin-left: 20px;
+
+.eventstring{
+	margin-bottom:0px;
 }
 
-.secondary-content{
+.here{
 	float:left !important;
 	padding-right: 10px;
 	margin-top:-18px;
 }
 
-.secondary-content i{
+.here i{
 	font-size: 1.5em !important;	
 }
