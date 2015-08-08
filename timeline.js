@@ -3,34 +3,6 @@ var timeline; //things in the timeline
 var years = []; //years on the timeline
 var question; //the current question (Object)
 var events = data;
-var oldEvents = {
-	'data' : [
-		{
-			'event':'1',
-			'year':1
-		},
-		{
-			'event':'2',
-			'year':2
-		},
-		{
-			'event':'3',
-			'year':3
-		},
-		{
-			'event':'4',
-			'year':4
-		},
-		{
-			'event':'5',
-			'year':5
-		},
-		{
-			'event':'6',
-			'year':6
-		}
-	]
-};
 
 $(document).ready(function(){
 
@@ -62,17 +34,19 @@ function rightMoveBozo( i ){
 	timeline.data.splice(i, 0, question);
 	refresh(timeline);
 	newQuestion();
+	$('.year').hide();
 }
 
 function wrongMoveBozo(){
-	// alert('Sorry, wrong move.');
-	console.log(question);
-	$('.year-in-question').html(question.year);
-	$('.event-in-question').html(question.event);
-	// console.log(timeline.data.);
-	$('.final-score').html(timeline.data.length);
-	$('#youlost').openModal();
-	startGame();
+	$('.year').show();
+	$('.possibility').hide();
+
+	$('.message').hide();
+	$('.youlost').removeClass('hide');
+	$('#points').html(timeline.data.length);
+	$('a#newgame').click(function(){
+		startGame();
+	});
 }
 
 function startGame(){
@@ -82,15 +56,19 @@ function startGame(){
 
 	timeline = {'data':[starter]};
 	years.push(starter.year);
-
 	refresh(timeline);
 	newQuestion();
+
+	$('.message').show();
+	$('.youlost').addClass('hide');
+	$('.year').hide();
 }
 
 function refresh(data){
 	var events_template = _.template( $( "#timeline_template" ).html() );
 
 	$('.timeline').html(events_template(data));
+
 	
 	$('a.here').click(function(){
 		checkDates.call(this);
@@ -101,9 +79,9 @@ function newQuestion(){
 	question = getNewEvent();
 	years.push(question.year);
 
-	$('.question').html(question.event);
-	$('.question').attr('data-year', question.year);
-}
+	var question_template = _.template( $( "#question_template" ).html() );
+
+	$('.current').html(question_template(question));}
 
 function getNewEvent(){
 	var trial = stack.pop();

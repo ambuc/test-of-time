@@ -1,66 +1,77 @@
 html{
 	font-family: 'Gentium Book Basic', serif;
+	font-size: 1.1em;
+	background-color: #e1f5fe;
 }
-
-
 h1{
-	font-size: 4.2em !important;
-	font-family: 'Playball', cursive;
+	font-size: 2.0em !important;
 }
 
-h5{
-	font-style: italic;
-}
 
 #header{
 	margin-bottom:0px;
 }
-
-.current .row, .collection .row{
+.container{
+	width:90%;
+}
+.row{
 	margin-bottom:0px;
 }
-
-.current{
-	margin-top:15px;
+.phantom{
+	display: none;
 }
 
-.collection, .collection-item, .collection-header{
-	border: 0px white !important;
+/*current question*/
+.current{ margin-top:15px; }
+.current .card{ min-height:150px; }
+.question{ text-align: justify; }
+.current table th{ 
+	vertical-align: top; 
+	font-weight: normal; 
+	font-style: italic;
 }
 
-.timeline{
-	padding-top:0px;
+/*timeline*/
+table#timelinetable{
+	margin-bottom:10px;
+	margin-top:10px;
 }
 
-.collection-item{
-	padding:5px !important;
+table#timelinetable th, table#timelinetable td{
+	padding:5px;
+}
+table#timelinetable .possibility{
+	vertical-align: top;
+	/*padding-right: 10px;*/
+}
+table#timelinetable .possibility a{
+	float:left;
+	margin-top:-22px;
+}
+table#timelinetable .year{
+	vertical-align: top;	
+	font-style: italic;
+	text-align:right;
 }
 
-.eventstring{
-	margin-bottom:0px;
-}
-
-.here{
-	float:left !important;
-	padding-right: 10px;
-	margin-top:-18px;
-}
-
-.here i{
-	font-size: 1.5em !important;	
-}
 
 
 /*answers*/
+
+#youlost .card-content{
+	/*margin-bottom:0px;*/
+	height:auto !important;
+}
+#youlost .card.small{
+	height:auto !important;
+}
 #youlost .modal-content p{
-	color: grey;
 }
-.event-in-question, .year-in-question{
-	font-style: italic !important;
-	color: black;
+#youlost .modal-content span{
 }
-
-
+#youlost #resultstable th#firstlevel{
+	min-width: 150px;
+}
 
 
 

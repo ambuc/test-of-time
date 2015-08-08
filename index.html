@@ -3,75 +3,63 @@
 <head>
 	<title>The Test of Time</title>
 
-	<!-- oswald -->
-	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-	<!-- Josefin Sans -->
-	<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+	<!-- css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-
 	<link rel="stylesheet" type="text/css" href="index.css" />
 
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
 
-	<div class='row brown lighten-3' id='header'>
+	<div class='row light-blue lighten-2' id='header'>
 		<div class='container'>
 			<div class='col s12'>
-				<h1 class='brown-text'>The Test of Time</h1>
-			</div>
-		</div>
-	</div>
-	
-	<div class='row brown lighten-4'>
-		<div class='container'>
-			<div class='col s12'>
-				<h5 class='flow-text'>Place the historical event chronologically in the timeline.</h5>
+				<h1 class='flow-text'>
+					The Test of Time
+				</h1>
 			</div>
 		</div>
 	</div>
 
-	<div class='container'>
+	<div class='light-blue lighten-3'>
+		<div class='container row youlost hide'>
+			<div class='col s12'>
+				<br/>
+				<h5 class='center-align'>
+					<b>Game Over!</b> You placed <b id='points'></b> events correctly.
+				</h5>
+			</div>
+			<div class='col s12 center-align'>
+				<a class='btn-large green white-text' id='newgame'>
+					<i class='material-icons left'>refresh</i>
+					Play Again
+				</a>
+				<br/>
+				<br/>
+			</div>
+		</div>
 
-		<div class='row'>
-			<div class='col s12 m6 current'>
-				<i>To Sort:</i>
-				<div class="card-panel white lighten-5">
-					<div class='row'>
-						<div class='col s2 right-align'>
-							<i class="material-icons circle grey lighten-5 grey-text">event_note</i>
-						</div>
-						<div class='col s10 question'>
-						</div>
-					</div>
+		<div class='container row'>
+			<div class='col s12 m5'>
+				<div class='message'>
+					<p> <i>Place this historical event chronologically in the timeline:</i> </p>
 				</div>
-		        <!-- <span class='hide-on-small-only hovering'>
-			        <i>currently hovering:</i>
-					<div class="card-panel white lighten-5">
-						<div class='row'>
-							<div class='col s2 right-align'>
-								<i class="material-icons circle grey lighten-5 grey-text">event_note</i>
-							</div>
-							<div class='col s10 hover_text'>
-							</div>
-						</div>
-			        </div>
-			    </span> -->
+				<span class='current'>
+				</span>
 			</div>
-
-			<div class='col s12 m6 events'>
-				<ul class="collection timeline">
-				</ul>
-			</div>
-
+			<div class='col s12 m7 events timeline'> </div>
 		</div>
 	</div>
 
-	<div class='row brown lighten-4'>
+	<div class='row light-blue lighten-4'>
 		<div class='container'>
 			<div class='col s12'>
 				<p>a game by <a href="http://julianrosenblum.com">Julian</a> and <a href="http://jbuckland.com">James</a>, built using data from Wikipedia originally scraped by <a href="http://vizgr.org/historical-events/">Daniel Hienert</a>.</p>
@@ -79,74 +67,66 @@
 		</div>
 	</div>
 
-	<script type="text/template" id="timeline_template">
-		<li class="collection-item">
-			<div class='row'>
-				<div class='col s1 button-block'>
-					<a class="" data-index = "<%=-1%>" data-year = "Infinity">
-						<i class="material-icons circle white-text">chevron_right</i>
-					</a>
-				</div>
-				<div class='col s11 event-block'>
-					<i class='grey-text'>The Present</i>
-				</div>
-			</div>
-
-		</li>
-		
-		<% for(var i = 0; i < data.length; i++){ %> 
-			<li class="collection-item historical-event" data-string = "<%=data[i].event%>">
-				<div class='row'>
-					<div class='col s1 button-block'>
-						<a class="here" data-year="<%=data[i].year%>" data-index = "<%=i%>">
-							<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
-						</a>
-					</div>
-					<div class='col s11 event-block'>
-						<span class='eventstring'>
-							<%=data[i].event%>
-						</span>
-					</div>
-				</div>
-			</li>
-			<% } %>
-
-			<li class="collection-item">
-
-				<div class='row'>
-					<div class='col s1 button-block'>
-						<a class="here" data-index = "<%=data.length%>" data-year = "-Infinity">
-							<i class="material-icons circle brown lighten-5 brown-text">chevron_right</i>
-						</a>
-					</div>
-					<div class='col s11 event-block'>
-						<i class='grey-text'>The Beginning of Time</i>
-					</div>
-				</div>
-			</li>
-
-		</script>
-
-		<!-- Modal Trigger -->
-		<!-- <a class="hide waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
-
-		<!-- Modal Structure -->
-		<div id="youlost" class="modal">
-			<div class="modal-content">
-				<h2>
-					<i class='material-icons left medium'>mood_bad</i>
-					Game Over
-				</h2>
-				<p class='flow-text'>Sorry, you lost! The event in question was <span class='event-in-question'></span>, which took place in <span class='year-in-question'></span>. Better luck next time!</p>
-				<h4>Final Score: <span class='final-score'></span></h4>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-large green white-text">
-					<i class='material-icons left'>refresh</i>
-					New Game
-				</a>
-			</div>
+	<script type="text/template" id="question_template">
+		<div class="card white black-text valign-wrapper">
+            <div class="card-content valign">
+            	<table>
+            		<tr>
+            			<th class='year'>
+            				<%=year%>
+        				</th>
+            			<td class='question' data-year="<%=year%>">
+            				<%=event%>
+        				</td>
+            		</tr>
+            	</table>
+            </div>
 		</div>
+	</script>
+
+	<script type="text/template" id="timeline_template">
+		<div class="card white black-text">
+            <div class="card-content">
+				<table id='timelinetable'>
+					<tr>
+						<th class='possibility'>
+							<a class="phantom" data-index = "<%=-1%>" data-year = "Infinity">
+								<i class="material-icons circle white-text">chevron_right</i>
+							</a>
+						</th>
+						<td class='year'></td>
+						<td> <i class='grey-text'>The Present</i> </td>
+					</tr>
+					
+					<% for(var i = 0; i < data.length; i++){ %> 
+						<tr>
+							<th class='possibility'>
+								<a class="here" data-year="<%=data[i].year%>" data-index = "<%=i%>">
+									<i class="material-icons circle red lighten-5 red-text">chevron_right</i>
+								</a>
+							</th>
+							<td class='year'><%=data[i].year%></td>
+							<td class='event'>
+								<%=data[i].event%>
+							</td>
+						</tr>
+					<% } %>
+
+					<tr>
+						<th class='possibility'>
+							<a class="here" data-index = "<%=data.length%>" data-year = "-Infinity">
+								<i class="material-icons circle red lighten-5 red-text">chevron_right</i>
+							</a>
+						</th>
+						<td class='year'></td>
+						<td> <i class='grey-text'>The Beginning of Time</i> </td>
+					</tr>
+				</table>
+            </div>
+		</div>
+
+		
+	</script>
 
 	</body>
 
