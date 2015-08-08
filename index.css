@@ -31,6 +31,9 @@ h1{
 .collection-item{
 	padding:5px !important;
 }
+.collection-item div{
+	margin-left: 20px;
+}
 
 .secondary-content{
 	float:left !important;

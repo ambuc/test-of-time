@@ -2,7 +2,8 @@ var stack; //list of unasked events
 var timeline; //things in the timeline
 var years = []; //years on the timeline
 var question; //the current question (Object)
-var events = {
+var events = data;
+var oldEvents = {
 	'data' : [
 		{
 			'event':'1',
@@ -43,16 +44,16 @@ function checkDates(){
 	var beforeDate = Number($(this).attr('data-year'));
 	var afterDate = Number($('[data-index='+(i-1)+']').attr('data-year'));
 	
-	console.log('data-index', i);
-	console.log('beforeDate', beforeDate);
-	console.log('afterDate', afterDate);
-	console.log('current', currDate);
+	// console.log('data-index', i);
+	// console.log('beforeDate', beforeDate);
+	// console.log('afterDate', afterDate);
+	// console.log('current', currDate);
 	
 	if( beforeDate < currDate && currDate < afterDate ){
-		console.log('right');
+		// console.log('right');
 		rightMoveBozo( i );
 	} else {
-		console.log('wrong');
+		// console.log('wrong');
 		wrongMoveBozo();
 	}
 }
@@ -69,7 +70,7 @@ function wrongMoveBozo(){
 }
 
 function startGame(){
-	stack = _.shuffle(events.data);
+	stack = _.shuffle(events);
 	var starter = stack.pop();
 
 	timeline = {'data':[starter]};
