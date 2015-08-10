@@ -7,7 +7,7 @@
 
 	<!-- fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<div class='row light-blue lighten-2' id='header'>
+	<div class='row light-blue lighten-4' id='header'>
 		<div class='container'>
 			<div class='col s12'>
 				<h1 class='flow-text'>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 
-	<div class='light-blue lighten-3'>
+	<div class='light-blue lighten-3 game-row'>
 		<div class='container row youlost hide'>
 			<div class='col s12'>
 				<br/>
@@ -59,7 +59,7 @@
 		</div>
 	</div>
 
-	<div class='row light-blue lighten-4'>
+	<div class='row light-blue lighten-2 footer-row'>
 		<div class='container'>
 			<div class='col s12'>
 				<p>a game by <a href="http://julianrosenblum.com">Julian</a> and <a href="http://jbuckland.com">James</a>, built using data from Wikipedia originally scraped by <a href="http://vizgr.org/historical-events/">Daniel Hienert</a>.</p>
@@ -102,7 +102,7 @@
 						<tr>
 							<th class='possibility'>
 								<a class="here" data-year="<%=data[i].year%>" data-index = "<%=i%>">
-									<i class="material-icons circle red lighten-5 red-text">chevron_right</i>
+									<i class="material-icons circle red lighten-4 red-text">chevron_right</i>
 								</a>
 							</th>
 							<td class='year'><%=data[i].year%></td>
@@ -115,7 +115,7 @@
 					<tr>
 						<th class='possibility'>
 							<a class="here" data-index = "<%=data.length%>" data-year = "-Infinity">
-								<i class="material-icons circle red lighten-5 red-text">chevron_right</i>
+								<i class="material-icons circle red lighten-4 red-text">chevron_right</i>
 							</a>
 						</th>
 						<td class='year'></td>

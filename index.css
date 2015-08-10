@@ -1,10 +1,15 @@
 html{
 	font-family: 'Gentium Book Basic', serif;
 	font-size: 1.1em;
-	background-color: #e1f5fe;
+	background-color: #42a5f5;
 }
 h1{
-	font-size: 2.0em !important;
+	font-size: 1.8em !important;
+	text-align: center;
+	text-transform: small-caps;
+	font-family: 'Cinzel Decorative', cursive;
+	font-weight: 900;
+	color: #42a5f5;
 }
 
 
@@ -19,6 +24,11 @@ h1{
 }
 .phantom{
 	display: none;
+}
+
+.game-row{
+	padding-top:20px;
+	padding-bottom:20px;
 }
 
 /*current question*/
@@ -73,5 +83,13 @@ table#timelinetable .year{
 	min-width: 150px;
 }
 
+/*footer*/
 
-
+.footer-row{
+	color: #333;
+	font-size: 0.8em;
+}
+.footer-row a{
+	text-decoration: underline;
+	color: inherit;
+}
