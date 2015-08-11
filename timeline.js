@@ -63,8 +63,6 @@ function refresh(data, i){
 	$('.timeline').html(events_template(data));
 
 	if(!_.isUndefined(i)){
-		console.log(i);
-		console.log($('.event-row')[i]);
 		$($('.event-row')[i]).children('.event').addClass('flash');
 	}
 	
