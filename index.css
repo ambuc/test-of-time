@@ -95,3 +95,29 @@ i.red.circle{
 	text-decoration: underline;
 	color: inherit;
 }
+
+.flash {
+	animation-name: color_change;
+	animation-duration: 1.5s;
+}
+
+@-webkit-keyframes color_change {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
+}
+@-moz-keyframes color_change {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
+}
+@-ms-keyframes color_change {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
+}
+@-o-keyframes color_change {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
+}
+@keyframes color_change {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
+}

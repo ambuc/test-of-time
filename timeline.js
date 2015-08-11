@@ -25,7 +25,7 @@ function checkDates(){
 
 function rightMoveBozo( i ){
 	timeline.data.splice(i, 0, question);
-	refresh(timeline);
+	refresh(timeline, i);
 	newQuestion();
 	$('.year').hide();
 }
@@ -57,15 +57,34 @@ function startGame(){
 	$('.year').hide();
 }
 
-function refresh(data){
+function refresh(data, i){
 	var events_template = _.template( $( "#timeline_template" ).html() );
 
 	$('.timeline').html(events_template(data));
+
+	if(!_.isUndefined(i)){
+		console.log(i);
+		console.log($('.event-row')[i]);
+		$($('.event-row')[i]).children('.event').addClass('flash');
+	}
 	
 	$('a.here').click(function(){
 		checkDates.call(this);
 	});
 }
+
+var notLocked = true;
+$.fn.animateHighlight = function(highlightColor, duration) {
+    var highlightBg = highlightColor || "#FFFF9C";
+    var animateMs = duration || 1500;
+    var originalBg = this.css("backgroundColor");
+    if (notLocked) {
+        notLocked = false;
+        this.stop().css("background-color", highlightBg)
+            .animate({backgroundColor: originalBg}, animateMs);
+        setTimeout( function() { notLocked = true; }, animateMs);
+    }
+};
 
 function newQuestion(){
 	question = getNewEvent();
@@ -73,7 +92,8 @@ function newQuestion(){
 
 	var question_template = _.template( $( "#question_template" ).html() );
 
-	$('.current').html(question_template(question));}
+	$('.current').html(question_template(question));
+}
 
 function getNewEvent(){
 	var trial = stack.pop();
