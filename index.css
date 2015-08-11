@@ -63,7 +63,9 @@ table#timelinetable .year{
 	font-style: italic;
 	text-align:right;
 }
-
+i.red.circle{
+	cursor: pointer;
+}
 
 
 /*answers*/
