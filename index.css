@@ -50,6 +50,10 @@ table#timelinetable{
 table#timelinetable th, table#timelinetable td{
 	padding:5px;
 }
+.year{
+	width: 3.5em;
+	text-align: right;
+}
 table#timelinetable .possibility{
 	vertical-align: top;
 	/*padding-right: 10px;*/

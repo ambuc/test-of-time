@@ -31,7 +31,10 @@ function rightMoveBozo( i ){
 }
 
 function wrongMoveBozo(){
-	$('.year').show();
+	$('.year').each(function (i, e) {
+		$(e).html(formatYear($(e).html()));
+		$(e).show();
+	});
 	$('.possibility').hide();
 
 	$('.message').hide();
@@ -100,4 +103,19 @@ function getNewEvent(){
 		trial = stack.pop();
 	}
 	return trial;
+}
+
+function formatYear(year) {
+	year = year.toString().replace(/\s/g, '');
+
+	if (year[0] === '-') {
+		year = year.slice(1);
+		year += " BC";
+	}
+
+	while (year[0] === '0') {
+		year = year.slice(1);
+	}
+
+	return year;
 }
