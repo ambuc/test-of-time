@@ -43,7 +43,7 @@ function wrongMoveBozo(){
 
 	$('.message').hide();
 	$('.youlost').removeClass('hide');
-	$('#points').html(timeline.data.length);
+	$('#points').html(timeline.data.length-1);
 	$('a#newgame').click(function(){
 		startGame();
 	});
