@@ -15,17 +15,10 @@ function checkDates(){
 	var currDate = Number($('.question').attr('data-year'));
 	var beforeDate = Number($(this).attr('data-year'));
 	var afterDate = Number($('[data-index='+(i-1)+']').attr('data-year'));
-	
-	// console.log('data-index', i);
-	// console.log('beforeDate', beforeDate);
-	// console.log('afterDate', afterDate);
-	// console.log('current', currDate);
-	
+		
 	if( beforeDate < currDate && currDate < afterDate ){
-		// console.log('right');
 		rightMoveBozo( i );
 	} else {
-		// console.log('wrong');
 		wrongMoveBozo();
 	}
 }
@@ -68,7 +61,6 @@ function refresh(data){
 	var events_template = _.template( $( "#timeline_template" ).html() );
 
 	$('.timeline').html(events_template(data));
-
 	
 	$('a.here').click(function(){
 		checkDates.call(this);
@@ -91,8 +83,3 @@ function getNewEvent(){
 	}
 	return trial;
 }
-
-String.prototype.trunc = String.prototype.trunc ||
-      function(n){
-          return this.length>n ? this.substr(0,n-1)+'&hellip;' : this;
-      };

@@ -4,27 +4,24 @@
 	<title>The Test of Time</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
 	<!-- fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:900' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<!-- css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="index.css" />
 
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
 
 	<div class='row light-blue lighten-4' id='header'>
 		<div class='container'>
 			<div class='col s12'>
-				<h1 class='flow-text'>
-					The Test of Time
-				</h1>
+				<h1 class='flow-text'> The Test of Time </h1>
 			</div>
 		</div>
 	</div>
@@ -52,8 +49,7 @@
 				<div class='message'>
 					<p> <i>Place this historical event chronologically in the timeline:</i> </p>
 				</div>
-				<span class='current'>
-				</span>
+				<span class='current'> </span>
 			</div>
 			<div class='col s12 m7 events timeline'> </div>
 		</div>
@@ -72,12 +68,8 @@
             <div class="card-content valign">
             	<table>
             		<tr>
-            			<th class='year'>
-            				<%=year%>
-        				</th>
-            			<td class='question' data-year="<%=year%>">
-            				<%=event%>
-        				</td>
+            			<th class='year'> <%=year%> </th>
+            			<td class='question' data-year="<%=year%>"> <%=event%> </td>
             		</tr>
             	</table>
             </div>
@@ -106,9 +98,7 @@
 								</a>
 							</th>
 							<td class='year'><%=data[i].year%></td>
-							<td class='event'>
-								<%=data[i].event%>
-							</td>
+							<td class='event'> <%=data[i].event%> </td>
 						</tr>
 					<% } %>
 
@@ -124,8 +114,6 @@
 				</table>
             </div>
 		</div>
-
-		
 	</script>
 
 	</body>
@@ -146,6 +134,5 @@
 	  ga('send', 'pageview');
 
 	</script>
-
 
 	</html>
