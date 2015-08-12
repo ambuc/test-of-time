@@ -26,15 +26,15 @@ function checkDates(){
 	// console.log('afterDate ' + afterDate);
 
 	if( beforeDate < currDate && currDate < afterDate ){
-		rightMoveBozo( i );
+		rightMoveBozo( i , true);
 	} else {
 		wrongMoveBozo();
 	}
 }
 
-function rightMoveBozo( i ){
+function rightMoveBozo( i, correct){
 	timeline.data.splice(i, 0, question);
-	refresh(timeline, i);
+	refresh(timeline, i, correct);
 	newQuestion();
 	$('.year').hide();
 }
@@ -48,7 +48,7 @@ function wrongMoveBozo(){
 	);
 
 	if (strikes < 2){
-		rightMoveBozo(place);
+		rightMoveBozo(place, false);
 		strikes+= 1;
 		refreshStrikes();
 		return;
@@ -102,14 +102,23 @@ function startGame(){
 	$('.year').hide();
 }
 
-function refresh(data, i){
+function refresh(data, i, correct){
 	var events_template = _.template( $( "#timeline_template" ).html() );
 
 	$('.timeline').html(events_template(data));
 
-	if(!_.isUndefined(i)){
-		$($('#large-timeline .ev')[i]).children('.event').addClass('flash');
-		$($('#small-timeline .ev')[i]).children('.event').addClass('flash');
+	if(!_.isUndefined(i) && correct){
+		$($('#large-timeline .ev')[i]).addClass('flashRight');
+		$($('#large-timeline .ev')[i]).children('.event').addClass('flashRight');
+		$($('#small-timeline .ev')[i]).addClass('flashRight');
+		$($('#small-timeline .ev')[i]).children('.event').addClass('flashRight');
+	}
+
+	if(!_.isUndefined(i) && !correct){
+		$($('#large-timeline .ev')[i]).addClass('flashWrong');
+		$($('#large-timeline .ev')[i]).children('.event').addClass('flashWrong');
+		$($('#small-timeline .ev')[i]).addClass('flashWrong');
+		$($('#small-timeline .ev')[i]).children('.event').addClass('flashWrong');
 	}
 	
 	$('.possibility').click(function(){

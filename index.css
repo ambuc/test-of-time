@@ -66,28 +66,55 @@ h1{
 
 /* FLASH */
 
-.flash {
-	animation-name: color_change;
+.flashRight {
+	animation-name: rightMove;
 	animation-duration: 1.5s;
 }
 
-@-webkit-keyframes color_change {
-	from { color: lightgreen; }
-	to { color: black; }
+
+.flashWrong {
+	animation-name: wrongMove;
+	animation-duration: 1.5s;
 }
-@-moz-keyframes color_change {
-	from { color: lightgreen; }
-	to { color: black; }
+
+@-webkit-keyframes rightMove {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
 }
-@-ms-keyframes color_change {
-	from { color: lightgreen; }
-	to { color: black; }
+@-moz-keyframes rightMove {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
 }
-@-o-keyframes color_change {
-	from { color: lightgreen; }
-	to { color: black; }
+@-ms-keyframes rightMove {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
 }
-@keyframes color_change {
-	from { color: lightgreen; }
-	to { color: black; }
+@-o-keyframes rightMove {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
+}
+@keyframes rightMove {
+	from { background-color: lightgreen; }
+	to { background-color: white; }
+}
+
+@-webkit-keyframes wrongMove {
+	from { background-color: pink; }
+	to { background-color: white; }
+}
+@-moz-keyframes wrongMove {
+	from { background-color: pink; }
+	to { background-color: white; }
+}
+@-ms-keyframes wrongMove {
+	from { background-color: pink; }
+	to { background-color: white; }
+}
+@-o-keyframes wrongMove {
+	from { background-color: pink; }
+	to { background-color: white; }
+}
+@keyframes wrongMove {
+	from { background-color: pink; }
+	to { background-color: white; }
 }
