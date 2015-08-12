@@ -3,6 +3,7 @@ var timeline; //things in the timeline
 var years = []; //years on the timeline
 var question; //the current question (Object)
 var events = data;
+var strikes = 0;
 
 $(document).ready(function(){
 
@@ -11,11 +12,19 @@ $(document).ready(function(){
 });
 
 function checkDates(){
-	var i = parseInt($(this).attr('data-index'));
+	var dataYear = $(this).attr('data-year');
+	var dataIndex = $(this).attr('data-index');
+
+	var i = parseInt(dataIndex);
 	var currDate = Number($('.question').attr('data-year'));
-	var beforeDate = Number($(this).attr('data-year'));
-	var afterDate = Number($('[data-index='+(i-1)+']').attr('data-year'));
-		
+	var afterDate = Number(dataYear);
+	var beforeDate = Number($('[data-index='+(i-1)+']').attr('data-year'));
+
+	// console.log('i ' + i);
+	// console.log('currDate ' + currDate);
+	// console.log('beforeDate ' + beforeDate);
+	// console.log('afterDate ' + afterDate);
+
 	if( beforeDate < currDate && currDate < afterDate ){
 		rightMoveBozo( i );
 	} else {
@@ -31,14 +40,43 @@ function rightMoveBozo( i ){
 }
 
 function wrongMoveBozo(){
+
+	var place = _.sortedIndex( 
+		_.map(timeline.data, 
+			function(e){return e.year}
+		), question.year
+	);
+
+	if (strikes < 2){
+		rightMoveBozo(place);
+		strikes+= 1;
+		refreshStrikes();
+		return;
+	}
+
+	strikes+=1;
+	refreshStrikes();
+
+	timeline.data.splice(place, 0, question);
+	refresh(timeline, place);
+
 	$('.year').each(function (i, e) {
 		$(e).html(formatYear($(e).html()));
 		$(e).show();
 	});
+
 	$('.possibility').hide();
 
-	$('.message').hide();
-	$('.youlost').removeClass('hide');
+	$('.question-col').hide();
+	$('.strikes-col').hide();
+	$('.error-col').removeClass('hide');
+	$('.high-col').removeClass('hide');
+
+	$($('.ev')[place]).addClass('z-depth-2');
+	$($('#large-timeline .ev')[place]).children('.card-content').toggleClass('green red');
+	$($('#small-timeline .ev')[place]).children('.card-content').toggleClass('green red');
+
+
 	$('#points').html(timeline.data.length-1);
 	$('a#newgame').click(function(){
 		startGame();
@@ -47,6 +85,7 @@ function wrongMoveBozo(){
 
 function startGame(){
 	stack = _.shuffle(events);
+	strikes = 0;
 
 	var starter = getNewEvent();
 
@@ -54,9 +93,12 @@ function startGame(){
 	years.push(starter.year);
 	refresh(timeline);
 	newQuestion();
+	refreshStrikes();
 
-	$('.message').show();
-	$('.youlost').addClass('hide');
+	$('.question-col').show();
+	$('.strikes-col').show();
+	$('.error-col').addClass('hide');
+	$('.high-col').addClass('hide');
 	$('.year').hide();
 }
 
@@ -66,10 +108,11 @@ function refresh(data, i){
 	$('.timeline').html(events_template(data));
 
 	if(!_.isUndefined(i)){
-		$($('.event-row')[i]).children('.event').addClass('flash');
+		$($('#large-timeline .ev')[i]).children('.event').addClass('flash');
+		$($('#small-timeline .ev')[i]).children('.event').addClass('flash');
 	}
 	
-	$('a.here').click(function(){
+	$('.possibility').click(function(){
 		checkDates.call(this);
 	});
 }
@@ -92,8 +135,13 @@ function newQuestion(){
 	years.push(question.year);
 
 	var question_template = _.template( $( "#question_template" ).html() );
+	$('.question-col').html(question_template(question));
 
-	$('.current').html(question_template(question));
+}
+
+function refreshStrikes(){
+	var strikes_template = _.template( $( "#strikes_template" ).html() );
+	$('.strikes-col').html(strikes_template({'strikes':strikes}));
 }
 
 function getNewEvent(){

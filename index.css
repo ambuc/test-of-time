@@ -1,104 +1,70 @@
 html{
 	font-family: 'Gentium Book Basic', serif;
 	font-size: 1.1em;
-	background-color: #42a5f5;
+	background-color: #efefef;
 }
 h1{
-	font-size: 1.8em !important;
-	text-align: center;
+	font-size: 1.6em !important;
 	text-transform: small-caps;
 	font-family: 'Cinzel Decorative', cursive;
 	font-weight: 900;
-	color: #42a5f5;
 }
 
+.row{ margin-bottom:0px; }
+.error-row{ margin-bottom:10px; }
+.question{ padding:0px !important; }
+.timeline{ margin-bottom:15px; margin-top:15px;}
+.question.el{ width: auto; }
 
-#header{
-	margin-bottom:0px;
-}
-.container{
-	width:90%;
-}
-.row{
-	margin-bottom:0px;
-}
-.phantom{
-	display: none;
-}
+/*allows for vertical alignment*/
+.el .card-content.valign-wrapper { height: 100%; }
 
-.game-row{
-	padding-top:20px;
-	padding-bottom:20px;
-}
+.year.card-content, .marks.card-content { padding:5px; padding-left:20px !important; }
 
-/*current question*/
-.current{ margin-top:15px; }
-.current .card{ min-height:150px; }
-.question{ text-align: justify; }
-.current table th{ 
-	vertical-align: top; 
-	font-weight: normal; 
-	font-style: italic;
-}
-
-/*timeline*/
-table#timelinetable{
-	margin-bottom:10px;
-	margin-top:10px;
-}
-
-table#timelinetable th, table#timelinetable td{
-	padding:5px;
-}
-.year{
-	width: 3.5em;
-	text-align: right;
-}
-table#timelinetable .possibility{
-	vertical-align: top;
-	/*padding-right: 10px;*/
-}
-table#timelinetable .possibility a{
-	float:left;
-	margin-top:-22px;
-}
-table#timelinetable .year{
-	vertical-align: top;	
-	font-style: italic;
-	text-align:right;
-}
-i.red.circle{
-	cursor: pointer;
-}
+.card-content.event { font-size:0.8em; }
 
 
-/*answers*/
+/*LARGE TIMELINE*/
 
-#youlost .card-content{
-	/*margin-bottom:0px;*/
-	height:auto !important;
-}
-#youlost .card.small{
-	height:auto !important;
-}
-#youlost .modal-content p{
-}
-#youlost .modal-content span{
-}
-#youlost #resultstable th#firstlevel{
-	min-width: 150px;
+/*no gap when cards wrap*/
+	#large-timeline .card{ margin-bottom:0px;  padding-bottom:0px; }
+	
+	#large-timeline .el{
+		vertical-align: top;
+		display: inline-block;
+		height: 150px;
+		width: auto;
+		max-width: 200px;
+	}
+	
+	#large-timeline a.possibility .card-content{ padding:1px !important; }
+
+	#large-timeline .el.card{ overflow: scroll; }
+
+/*SMALL TIMELINE*/
+	#small-timeline {
+		margin-top:		20px;
+		margin-bottom:	20px;
+	}
+
+	/*full-width year boxes*/
+	#small-timeline .el{ padding:0px !important; }
+
+	#small-timeline a.possibility .card-content{ padding:2px !important; margin-top:5px; }
+
+	#small-timeline .el.card{ margin:0px; }
+
+
+
+/* FOOTER */
+.footer-row{ color: #333; font-size: 1em; }
+.footer-row a{ text-decoration: underline; color: inherit; }
+
+.strikes{
+	padding-top:10px;
 }
 
-/*footer*/
-
-.footer-row{
-	color: #333;
-	font-size: 1em;
-}
-.footer-row a{
-	text-decoration: underline;
-	color: inherit;
-}
+/* FLASH */
 
 .flash {
 	animation-name: color_change;
@@ -106,22 +72,22 @@ i.red.circle{
 }
 
 @-webkit-keyframes color_change {
-	from { background-color: lightgreen; }
-	to { background-color: white; }
+	from { color: lightgreen; }
+	to { color: black; }
 }
 @-moz-keyframes color_change {
-	from { background-color: lightgreen; }
-	to { background-color: white; }
+	from { color: lightgreen; }
+	to { color: black; }
 }
 @-ms-keyframes color_change {
-	from { background-color: lightgreen; }
-	to { background-color: white; }
+	from { color: lightgreen; }
+	to { color: black; }
 }
 @-o-keyframes color_change {
-	from { background-color: lightgreen; }
-	to { background-color: white; }
+	from { color: lightgreen; }
+	to { color: black; }
 }
 @keyframes color_change {
-	from { background-color: lightgreen; }
-	to { background-color: white; }
+	from { color: lightgreen; }
+	to { color: black; }
 }

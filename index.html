@@ -23,46 +23,43 @@
 
 </head>
 <body>
+	<div class='container'>
 
-	<div class='row light-blue lighten-4' id='header'>
-		<div class='container'>
+		<div class='row' id='header'>
 			<div class='col s12'>
 				<h1 class='flow-text'> The Test of Time </h1>
 			</div>
 		</div>
-	</div>
 
-	<div class='light-blue lighten-3 game-row'>
-		<div class='container row youlost hide'>
-			<div class='col s12'>
-				<br/>
-				<h5 class='center-align'>
-					<b>Game Over!</b> You placed <b id='points'></b> events correctly.
-				</h5>
-			</div>
-			<div class='col s12 center-align'>
-				<a class='btn-large green white-text' id='newgame'>
-					<i class='material-icons left'>refresh</i>
-					Play Again
-				</a>
-				<br/>
-				<br/>
-			</div>
-		</div>
-
-		<div class='container row'>
-			<div class='col s12 m5'>
-				<div class='message'>
-					<p> <i>Place this historical event chronologically in the timeline:</i> </p>
+		<div class='row clue-row'> 
+			<div class='col s12 m6 l6 error-col hide'>
+				<div class='card white black-text'>
+					<div class='card-content'>
+						<h5><b>Game Over!</b> You placed <b id='points'></b> events correctly.</h5>
+					</div>
+					<div class='card-action right-align'>
+						<a class='btn green white-text' id='newgame'>
+							<i class='material-icons left'>refresh</i>
+							Play Again
+						</a>
+					</div>
 				</div>
-				<span class='current'> </span>
 			</div>
-			<div class='col s12 m7 events timeline'> </div>
+			<div class='col s12 m6 l6 high-col hide'> abc
+			</div>
+			<div class='col s10 m10 l11 question-col'>
+			</div>
+			<div class='col s2 m2 l1 strikes-col'>
+			</div>
 		</div>
 	</div>
 
-	<div class='row light-blue lighten-2 footer-row'>
-		<div class='container'>
+	<div class='row timeline-row'>
+		<div class='col s12 timeline'> </div>
+	</div>
+
+	<div class='container'>
+		<div class='row footer-row'>
 			<div class='col s12'>
 				<p>a game by <a href="http://julianrosenblum.com">Julian</a> and <a href="http://jbuckland.com">James</a>, built using data from Wikipedia originally scraped by <a href="http://vizgr.org/historical-events/">Daniel Hienert</a>. See the source on <a href="https://github.com/ambuc/test-of-time">Github</a>. </p>
 			</div>
@@ -70,19 +67,121 @@
 	</div>
 
 	<script type="text/template" id="question_template">
-		<div class="card white black-text valign-wrapper">
-            <div class="card-content valign">
-            	<table>
-            		<tr>
-            			<th class='year'> <%=year%> </th>
-            			<td class='question' data-year="<%=year%>"> <%=event%> </td>
-            		</tr>
-            	</table>
-            </div>
+		<div class='card white question' data-year="<%=year%>">
+			<div class='card-content green lighten-3 white-text marks'>
+				Place the historical event in the timeline
+			</div>
+			<div class='card-content white black-text event'>
+				<%=event%>
+			</div>
 		</div>
-	</script>
+    </script>
+
+    <script type="text/template" id="strikes_template">
+		<div class='strikes'>
+			<% for(var i = 0; i < 3-strikes; i++) { %>
+				<i class='material-icons green-text'>favorite</i> <br/>
+			<% } %>
+			<% for(var i = 0; i < strikes; i++) { %> 
+				<i class='material-icons red-text'>favorite_border</i> <br/>
+			<% } %>
+		</div>
+    </script>
 
 	<script type="text/template" id="timeline_template">
+
+		<div class='hide-on-small-only' id='large-timeline'>
+
+			<div class='card light-blue white-text el possibility hide' data-index = "<%=-1%>" data-year = "-Infinity">
+				<a class="hide" >
+					<i class="material-icons circle white-text">graphic_eq</i>
+				</a>
+			</div>
+
+			<div class='card white black-text el'>
+				<div class='card-content valign-wrapper'>
+					<i class='grey-text valign'>The <br/> Beginning <br/> of Time</i>
+				</div>
+			</div>
+		
+			<% for(var i = 0; i < data.length; i++){ %> 
+				<a class='card light-blue white-text el possibility' data-year="<%=data[i].year%>" data-index = "<%=i%>">
+					<div class='card-content valign-wrapper'>
+							<i class="valign material-icons circle white-text">graphic_eq</i>
+					</div>
+				</a>
+
+				<div class='card white el ev'>
+					<div class='card-content green lighten-3 white-text year'>
+						<%=data[i].year%>
+					</div>
+					<div class='card-content white black-text event'>
+						<%=data[i].event%>
+					</div>
+				</div>
+			<% } %>
+			
+			<a class='card light-blue black-text el possibility' data-index = "<%=data.length%>" data-year = "Infinity">
+				<div class='card-content valign-wrapper'>
+						<i class="valign material-icons circle white-text">graphic_eq</i>
+				</div>
+			</a>
+
+			<div class='card white black-text el'>
+				<div class='card-content valign-wrapper'>
+					<i class='grey-text valign'>The <br/> Present <br/> Day</i>
+				</div>
+			</div>
+		</div>
+
+
+		<div class='hide-on-med-and-up row' id='small-timeline'>
+
+			<a class='col s12 card light-blue white-text el possibility hide' data-index = "<%=-1%>" data-year = "-Infinity">
+					<i class="material-icons circle white-text">vertical_align_center</i>
+			</a>
+
+			<div class='col s12 card white black-text el'>
+				<div class='card-content valign-wrapper'>
+					<i class='grey-text valign'>The Beginning of Time</i>
+				</div>
+			</div>
+		
+			<% for(var i = 0; i < data.length; i++){ %> 
+				<a class='col s12 card light-blue white-text el possibility' data-year="<%=data[i].year%>" data-index = "<%=i%>">
+					<div class='card-content center-align'>
+						<i class="material-icons circle white-text">vertical_align_center</i>
+					</div>
+				</a>
+
+				<div class='col s12 card white el ev'>
+					<div class='card-content green lighten-3 white-text year'>
+						<%=data[i].year%>
+					</div>
+					<div class='card-content white black-text event'>
+						<%=data[i].year%>
+						<%=data[i].event%>
+					</div>
+				</div>
+			<% } %>
+			
+			<a class='col s12 card light-blue black-text el possibility' data-index = "<%=data.length%>" data-year = "Infinity">
+				<div class='card-content center-align'>
+						<i class="material-icons circle white-text">vertical_align_center</i>
+				</div>
+			</a>
+
+			<div class='col s12 card white black-text el'>
+				<div class='card-content valign-wrapper'>
+					<i class='grey-text valign'>The Present Day</i>
+				</div>
+			</div>
+
+		</div>
+
+	</script>
+
+	<script type="text/template" id="old_timeline_template">
 		<div class="card white black-text">
             <div class="card-content">
 				<table id='timelinetable'>
