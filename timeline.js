@@ -8,8 +8,78 @@ var strikes = 0;
 $(document).ready(function(){
 
 	startGame();
+	$('.clue-row').removeClass('hide');
 
 });
+
+function startGame(){
+	stack = _.shuffle(events);
+	strikes = 0;
+
+	var starter = getNewEvent();
+
+	timeline = {'data':[starter]};
+	years.push(starter.year);
+	refresh(timeline);
+	newQuestion();
+	resetStrikes();
+	refreshStrikes();
+
+	$('.question-col').show();
+	$('.strikes-col').show();
+	$('.error-col').hide();
+	$('.high-col').hide();
+}
+
+function newQuestion(){
+	question = getNewEvent();
+	years.push(question.year);
+	// console.log(question);
+
+	var question_template = _.template( $( "#question_template" ).html() );
+	$('.question-col').html(question_template(question));
+
+}
+
+function refresh(data, i, correct){
+	var events_template = _.template( $( "#timeline_template" ).html() );
+
+	$('.timeline').html(events_template(data));
+
+	if(!_.isUndefined(i)){
+		expand(i, correct);
+	}
+	
+	$('.year-content').hide();
+
+	$('.possibility').click(function(){
+		checkDates.call(this);
+	});
+
+	$('.possibility').hover(function(){ $(this).toggleClass('z-depth-1'); });
+}
+
+function refreshStrikes(){
+	$('.strikes-col i').eq(3-strikes).addClass('animated bounceIn');
+	$('.strikes-col i').eq(3-strikes).toggleClass('green-text red-text');
+	$('.strikes-col i').eq(3-strikes).html('favorite_border');
+	// red-text, favorite_border
+}
+
+function resetStrikes(){
+	$('.strikes-col i').removeClass('red-text animated bounceIn');
+	$('.strikes-col i').addClass('green-text');
+	$('.strikes-col i').html('favorite');
+}
+
+function getNewEvent(){
+	var trial = stack.pop();
+
+	while(_.isUndefined(trial) || _.isNull(trial) || _.contains(years, trial.year)){
+		trial = stack.pop();
+	}
+	return trial;
+}
 
 function checkDates(){
 	var dataYear = $(this).attr('data-year');
@@ -26,20 +96,20 @@ function checkDates(){
 	// console.log('afterDate ' + afterDate);
 
 	if( beforeDate < currDate && currDate < afterDate ){
-		rightMoveBozo( i , true);
+		right( i , true);
 	} else {
-		wrongMoveBozo();
+		wrong();
 	}
 }
 
-function rightMoveBozo( i, correct){
+function right( i, correct){
 	timeline.data.splice(i, 0, question);
 	refresh(timeline, i, correct);
 	newQuestion();
 	$('.year-content').hide();
 }
 
-function wrongMoveBozo(){
+function wrong(){
 
 	var place = _.sortedIndex( 
 		_.map(timeline.data, 
@@ -48,7 +118,7 @@ function wrongMoveBozo(){
 	);
 
 	if (strikes < 2){
-		rightMoveBozo(place, false);
+		right(place, false);
 		strikes+= 1;
 		refreshStrikes();
 		return;
@@ -66,91 +136,23 @@ function wrongMoveBozo(){
 	});
 
 	$('.possibility').hide();
+	$('.year-content').removeClass('hide');
+	$('.year-content').show();
 
 	$('.question-col').hide();
 	$('.strikes-col').hide();
-	$('.error-col').removeClass('hide');
-	$('.high-col').removeClass('hide');
+	$('.error-col').show();
+	$('.high-col').show();
 
 	$($('.ev')[place]).addClass('z-depth-2');
-	$($('#large-timeline .ev')[place]).children('.card-content').toggleClass('green red');
-	$($('#small-timeline .ev')[place]).children('.card-content').toggleClass('green red');
+	$($('#large-timeline .ev')[place]).children('.year-content').toggleClass('green red');
+	$($('#small-timeline .ev')[place]).children('.year-content').toggleClass('green red');
 
 
 	$('#points').html(timeline.data.length-1);
 	$('a#newgame').click(function(){
 		startGame();
 	});
-}
-
-function startGame(){
-	stack = _.shuffle(events);
-	strikes = 0;
-
-	var starter = getNewEvent();
-
-	timeline = {'data':[starter]};
-	years.push(starter.year);
-	refresh(timeline);
-	newQuestion();
-	refreshStrikes();
-
-	$('.question-col').show();
-	$('.strikes-col').show();
-	$('.error-col').addClass('hide');
-	$('.high-col').addClass('hide');
-	$('.year-content').hide();
-}
-
-function refresh(data, i, correct){
-	var events_template = _.template( $( "#timeline_template" ).html() );
-
-	$('.timeline').html(events_template(data));
-
-	if(!_.isUndefined(i) && correct){
-		$($('#large-timeline .ev')[i]).addClass('flashRight');
-		$($('#large-timeline .ev')[i]).children('.event-content').addClass('flashRight');
-		$($('#small-timeline .ev')[i]).addClass('flashRight');
-		$($('#small-timeline .ev')[i]).children('.event-content').addClass('flashRight');
-	}
-
-	if(!_.isUndefined(i) && !correct){
-		$($('#large-timeline .ev')[i]).addClass('flashWrong');
-		$($('#large-timeline .ev')[i]).children('.event-content').addClass('flashWrong');
-		$($('#small-timeline .ev')[i]).addClass('flashWrong');
-		$($('#small-timeline .ev')[i]).children('.event-content').addClass('flashWrong');
-	}
-	
-	$('.possibility').click(function(){
-		checkDates.call(this);
-	});
-
-	$('.possibility').hover(function(){ $(this).toggleClass('z-depth-1'); });
-}
-
-
-function newQuestion(){
-	question = getNewEvent();
-	years.push(question.year);
-	// console.log(question);
-
-	var question_template = _.template( $( "#question_template" ).html() );
-	$('.question-col').html(question_template(question));
-
-}
-
-function refreshStrikes(){
-	var strikes_template = _.template( $( "#strikes_template" ).html() );
-	$('.strikes-col').html(strikes_template({'strikes':strikes}));
-}
-
-function getNewEvent(){
-	var trial = stack.pop();
-
-	while(_.isUndefined(trial) || _.isNull(trial) || _.contains(years, trial.year)){
-		trial = stack.pop();
-	}
-	return trial;
 }
 
 function formatYear(year) {
@@ -167,3 +169,34 @@ function formatYear(year) {
 
 	return year;
 }
+
+function expand(i){
+
+	$( "#large-timeline .ev" ).eq(i).toggle();
+	$( "#large-timeline .ev" ).eq(i).animate({
+		width: 'toggle'
+	}, 500);
+
+
+	$( "#small-timeline .ev" ).eq(i).toggle();
+	$( "#small-timeline .ev" ).eq(i).animate({
+		height: "toggle"
+	}, 500);
+
+}
+
+
+
+	// if(!_.isUndefined(i) && correct){
+	// 	$($('#large-timeline .ev')[i]).addClass('flashRight');
+	// 	$($('#large-timeline .ev')[i]).children('.event-content').addClass('flashRight');
+	// 	$($('#small-timeline .ev')[i]).addClass('flashRight');
+	// 	$($('#small-timeline .ev')[i]).children('.event-content').addClass('flashRight');
+	// }
+
+	// if(!_.isUndefined(i) && !correct){
+	// 	$($('#large-timeline .ev')[i]).addClass('flashWrong');
+	// 	$($('#large-timeline .ev')[i]).children('.event-content').addClass('flashWrong');
+	// 	$($('#small-timeline .ev')[i]).addClass('flashWrong');
+	// 	$($('#small-timeline .ev')[i]).children('.event-content').addClass('flashWrong');
+	// }

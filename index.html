@@ -19,6 +19,7 @@
 
 	<!-- css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" type="text/css" href="index.css" />
 
 </head>
@@ -30,8 +31,8 @@
 			</div>
 		</div>
 
-		<div class='row clue-row'> 
-			<div class='col s12 error-col hide'>
+		<div class='row clue-row hide'> 
+			<div class='col s12 error-col'>
 				<div class='card white black-text'>
 					<div class='card-content'>
 						<h5><b>Game Over!</b> You placed <b id='points'></b> events correctly.</h5>
@@ -44,11 +45,16 @@
 					</div>
 				</div>
 			</div>
-			<div class='col s12 high-col hide'> 
+			<div class='col s12 high-col'> 
 			</div>
 			<div class='col s10 m10 l11 question-col'>
 			</div>
 			<div class='col s2 m2 l1 strikes-col'>
+				<div class='strikes'>
+					<i class='material-icons green-text'>favorite</i> <br/>
+					<i class='material-icons green-text'>favorite</i> <br/>
+					<i class='material-icons green-text'>favorite</i> <br/>
+				</div>
 			</div>
 		</div>
 
@@ -71,17 +77,6 @@
 			<div class='card-content white black-text event'>
 				<%=event%>
 			</div>
-		</div>
-    </script>
-
-    <script type="text/template" id="strikes_template">
-		<div class='strikes'>
-			<% for(var i = 0; i < 3-strikes; i++) { %>
-				<i class='material-icons green-text'>favorite</i> <br/>
-			<% } %>
-			<% for(var i = 0; i < strikes; i++) { %> 
-				<i class='material-icons red-text'>favorite_border</i> <br/>
-			<% } %>
 		</div>
     </script>
 
@@ -115,7 +110,7 @@
 						</a>
 						<span class='year'><%=data[i].year%></span>
 					</div>
-					<div class='card-content white black-text event-content'>
+					<div class='card-content black-text event-content'>
 						<span class='event'><%=data[i].event%></span>
 					</div>
 				</div>
@@ -155,7 +150,7 @@
 				</a>
 
 				<div class='col s12 card white el ev'>
-					<div class='card-content green lighten-3 white-text year'>
+					<div class='card-content green lighten-3 white-text year-content hide'>
 						<%=data[i].year%>
 					</div>
 					<div class='card-content white black-text event'>
