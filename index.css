@@ -37,7 +37,7 @@ h1{
 		max-width: 200px;
 	}
 	
-	#large-timeline a.possibility .card-content{ padding:1px !important; }
+	#large-timeline a.possibility .card-content{ padding:1px !important; cursor: pointer; }
 
 	#large-timeline .el.card{ overflow: scroll; }
 
@@ -50,7 +50,7 @@ h1{
 	/*full-width year boxes*/
 	#small-timeline .el{ padding:0px !important; }
 
-	#small-timeline a.possibility .card-content{ padding:2px !important; margin-top:5px; }
+	#small-timeline a.possibility .card-content{ padding:2px !important; margin-top:5px; cursor: pointer; }
 
 	#small-timeline .el.card{ margin:0px; }
 
