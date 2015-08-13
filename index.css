@@ -14,14 +14,13 @@ h1{
 .error-row{ margin-bottom:10px; }
 .question{ padding:0px !important; }
 .timeline{ margin-bottom:15px; margin-top:15px;}
-.question.el{ width: auto; }
+.question.el{ width: auto;}
+.clue-row { margin-bottom:-20px;}
 
 /*allows for vertical alignment*/
 .el .card-content.valign-wrapper { height: 100%; }
-
-.year.card-content, .marks.card-content { padding:5px; padding-left:20px !important; }
-
-.card-content.event { font-size:0.8em; }
+.card-content.event-content { font-size:0.8em; }
+.year-content, .marks { padding:5px !important; padding-left:20px !important; }
 
 
 /*LARGE TIMELINE*/
@@ -52,7 +51,7 @@ h1{
 
 	#small-timeline a.possibility .card-content{ padding:2px !important; margin-top:5px; cursor: pointer; }
 
-	#small-timeline .el.card{ margin:0px; }
+	#small-timeline .el.card{ margin:0px; padding-bottom:0px; }
 
 
 

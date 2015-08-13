@@ -24,7 +24,6 @@
 </head>
 <body>
 	<div class='container'>
-
 		<div class='row' id='header'>
 			<div class='col s12'>
 				<h1 class='flow-text'> The Test of Time </h1>
@@ -32,7 +31,7 @@
 		</div>
 
 		<div class='row clue-row'> 
-			<div class='col s12 m6 l6 error-col hide'>
+			<div class='col s12 error-col hide'>
 				<div class='card white black-text'>
 					<div class='card-content'>
 						<h5><b>Game Over!</b> You placed <b id='points'></b> events correctly.</h5>
@@ -45,23 +44,21 @@
 					</div>
 				</div>
 			</div>
-			<div class='col s12 m6 l6 high-col hide'> 
+			<div class='col s12 high-col hide'> 
 			</div>
 			<div class='col s10 m10 l11 question-col'>
 			</div>
 			<div class='col s2 m2 l1 strikes-col'>
 			</div>
 		</div>
-	</div>
 
-	<div class='row timeline-row'>
-		<div class='col s12 timeline'> </div>
-	</div>
+		<div class='row timeline-row'>
+			<div class='col s12 timeline'> </div>
+		</div>
 
-	<div class='container'>
 		<div class='row footer-row'>
 			<div class='col s12'>
-				<p>a game by <a href="http://julianrosenblum.com">Julian</a> and <a href="http://jbuckland.com">James</a>, built using data from Wikipedia originally scraped by <a href="http://vizgr.org/historical-events/">Daniel Hienert</a>. See the source on <a href="https://github.com/ambuc/test-of-time">Github</a>. </p>
+				<p>Built by <a href="http://julianrosenblum.com">Julian</a> and <a href="http://jbuckland.com">James</a> using data from Wikipedia originally scraped by <a href="http://vizgr.org/historical-events/">Daniel Hienert</a>. See the source on <a href="https://github.com/ambuc/test-of-time">Github</a>. </p>
 			</div>
 		</div>
 	</div>
@@ -99,8 +96,8 @@
 			</div>
 
 			<div class='card white black-text el'>
-				<div class='card-content valign-wrapper'>
-					<i class='grey-text valign'>The <br/> Beginning <br/> of Time</i>
+				<div class='card-content valign-wrapper  right-align'>
+					<i class='grey-text valign'>The<br/>Beginning<br/>of Time</i>
 				</div>
 			</div>
 		
@@ -112,11 +109,14 @@
 				</a>
 
 				<div class='card white el ev'>
-					<div class='card-content green lighten-3 white-text year'>
-						<%=data[i].year%>
+					<div class='card-content green lighten-3 white-text year-content'>
+						<a class='' href="https://en.wikipedia.org/wiki/<%=formatYear(data[i].year)%>"> 
+							<i class='material-icons white-text left'>link</i> 
+						</a>
+						<span class='year'><%=data[i].year%></span>
 					</div>
-					<div class='card-content white black-text event'>
-						<%=data[i].event%>
+					<div class='card-content white black-text event-content'>
+						<span class='event'><%=data[i].event%></span>
 					</div>
 				</div>
 			<% } %>
@@ -142,7 +142,7 @@
 			</a>
 
 			<div class='col s12 card white black-text el'>
-				<div class='card-content valign-wrapper'>
+				<div class='card-content valign-wrapper '>
 					<i class='grey-text valign'>The Beginning of Time</i>
 				</div>
 			</div>
@@ -232,11 +232,10 @@
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
 
 	  ga('create', 'UA-66207535-1', 'auto');
 	  ga('send', 'pageview');
-
 	</script>
 
 	</html>

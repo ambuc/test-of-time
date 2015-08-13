@@ -36,7 +36,7 @@ function rightMoveBozo( i, correct){
 	timeline.data.splice(i, 0, question);
 	refresh(timeline, i, correct);
 	newQuestion();
-	$('.year').hide();
+	$('.year-content').hide();
 }
 
 function wrongMoveBozo(){
@@ -99,7 +99,7 @@ function startGame(){
 	$('.strikes-col').show();
 	$('.error-col').addClass('hide');
 	$('.high-col').addClass('hide');
-	$('.year').hide();
+	$('.year-content').hide();
 }
 
 function refresh(data, i, correct){
@@ -109,39 +109,30 @@ function refresh(data, i, correct){
 
 	if(!_.isUndefined(i) && correct){
 		$($('#large-timeline .ev')[i]).addClass('flashRight');
-		$($('#large-timeline .ev')[i]).children('.event').addClass('flashRight');
+		$($('#large-timeline .ev')[i]).children('.event-content').addClass('flashRight');
 		$($('#small-timeline .ev')[i]).addClass('flashRight');
-		$($('#small-timeline .ev')[i]).children('.event').addClass('flashRight');
+		$($('#small-timeline .ev')[i]).children('.event-content').addClass('flashRight');
 	}
 
 	if(!_.isUndefined(i) && !correct){
 		$($('#large-timeline .ev')[i]).addClass('flashWrong');
-		$($('#large-timeline .ev')[i]).children('.event').addClass('flashWrong');
+		$($('#large-timeline .ev')[i]).children('.event-content').addClass('flashWrong');
 		$($('#small-timeline .ev')[i]).addClass('flashWrong');
-		$($('#small-timeline .ev')[i]).children('.event').addClass('flashWrong');
+		$($('#small-timeline .ev')[i]).children('.event-content').addClass('flashWrong');
 	}
 	
 	$('.possibility').click(function(){
 		checkDates.call(this);
 	});
+
+	$('.possibility').hover(function(){ $(this).toggleClass('z-depth-1'); });
 }
 
-var notLocked = true;
-$.fn.animateHighlight = function(highlightColor, duration) {
-    var highlightBg = highlightColor || "#FFFF9C";
-    var animateMs = duration || 1500;
-    var originalBg = this.css("backgroundColor");
-    if (notLocked) {
-        notLocked = false;
-        this.stop().css("background-color", highlightBg)
-            .animate({backgroundColor: originalBg}, animateMs);
-        setTimeout( function() { notLocked = true; }, animateMs);
-    }
-};
 
 function newQuestion(){
 	question = getNewEvent();
 	years.push(question.year);
+	// console.log(question);
 
 	var question_template = _.template( $( "#question_template" ).html() );
 	$('.question-col').html(question_template(question));
