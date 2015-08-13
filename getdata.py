@@ -17,6 +17,7 @@ def parseData(data):
 		desc = desc.split('{{')[0]
 		desc = desc.split('"@')[0]
 		desc = desc.split('ref name')[0]
+		desc = desc.split('http://')[0]
 		desc = re.sub('ampquot', '"', desc)
 		desc = re.sub('ampndash', '-', desc)
 		desc = re.sub('ampmdash', '--', desc)
@@ -39,11 +40,15 @@ def parseData(data):
 
 	desc = re.sub(r'\d\d\d\d', '----', desc)
 
-	if (len(desc) >= 23):
+	if ("quot" in desc):
+		return None
+
+	if (len(desc) >= 23 and len(desc) <= 140):
 		return {"event": desc, "img": img, "year": date}
 
 data = data.split('\n\n')
 data = map(parseData, data)
+data = [x for x in data if x is not None]
 
 print 'var data = ' + json.dumps(data) + ';'
 
