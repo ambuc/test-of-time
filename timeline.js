@@ -9,6 +9,7 @@ $(document).ready(function(){
 
 	startGame();
 	$('.clue-row').removeClass('hide');
+	$('.game-over-row').removeClass('hide');
 
 });
 
