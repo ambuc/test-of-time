@@ -2,12 +2,15 @@ html{
 	font-family: 'Gentium Book Basic', serif;
 	font-size: 1.1em;
 	background-color: #efefef;
+	/*background-color: #e8f5e9;*/
 }
 h1{
 	font-size: 1.6em !important;
 	text-transform: small-caps;
 	font-family: 'Cinzel Decorative', cursive;
 	font-weight: 900;
+	margin-bottom:0px;
+	padding-bottom:0px;
 }
 
 .row{ margin-bottom:0px; }
@@ -20,7 +23,7 @@ h1{
 /*allows for vertical alignment*/
 .el .card-content.valign-wrapper { height: 100%; }
 .card-content.event-content { font-size:0.8em; }
-.year-content, .marks { padding:5px !important; padding-left:20px !important; }
+.year-content, .marks-col { padding:0px !important; padding-left:20px !important; }
 
 
 /*LARGE TIMELINE*/

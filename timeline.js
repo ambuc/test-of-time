@@ -13,6 +13,7 @@ $(document).ready(function(){
 });
 
 function startGame(){
+	// $('html').css('background-color', '#e8f5e9');
 	stack = _.shuffle(events);
 	strikes = 0;
 
@@ -27,6 +28,7 @@ function startGame(){
 
 	$('.question-col').show();
 	$('.strikes-col').show();
+	$('.marks-col').show();
 	$('.error-col').hide();
 	$('.high-col').hide();
 }
@@ -60,7 +62,7 @@ function refresh(data, i, correct){
 }
 
 function refreshStrikes(){
-	$('.strikes-col i').eq(3-strikes).addClass('animated bounceIn');
+	$('.strikes-col i').eq(3-strikes).addClass('animated flash infinite');
 	$('.strikes-col i').eq(3-strikes).toggleClass('green-text red-text');
 	$('.strikes-col i').eq(3-strikes).html('favorite_border');
 	// red-text, favorite_border
@@ -117,6 +119,16 @@ function wrong(){
 		), question.year
 	);
 
+	if(strikes==0){
+		// $('html').css('background-color', '#fff3e0');
+	}
+	if(strikes==1){
+		// $('html').css('background-color', '#ffccbc');
+	}
+	if(strikes==2){
+		// $('html').css('background-color', '#ef9a9a');		
+	}
+
 	if (strikes < 2){
 		right(place, false);
 		strikes+= 1;
@@ -141,12 +153,13 @@ function wrong(){
 
 	$('.question-col').hide();
 	$('.strikes-col').hide();
+	$('.marks-col').hide();
 	$('.error-col').show();
 	$('.high-col').show();
 
 	$($('.ev')[place]).addClass('z-depth-2');
-	$($('#large-timeline .ev')[place]).children('.year-content').toggleClass('green red');
-	$($('#small-timeline .ev')[place]).children('.year-content').toggleClass('green red');
+	$($('#large-timeline .ev')[place]).children('.year-content').toggleClass('green red lighten-1');
+	$($('#small-timeline .ev')[place]).children('.year-content').toggleClass('green red lighten-1');
 
 
 	$('#points').html(timeline.data.length-1);

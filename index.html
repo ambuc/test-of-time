@@ -24,37 +24,53 @@
 
 </head>
 <body>
+
 	<div class='container'>
+
 		<div class='row' id='header'>
 			<div class='col s12'>
-				<h1 class='flow-text'> The Test of Time </h1>
+				<h1 class='flow-text'> The<span class='grey-text'>-</span>Test<span class='grey-text'>-</span>of<span class='grey-text'>-</span>Ti<span class='small grey-text'><small>.</small></span>me </h1>
 			</div>
 		</div>
 
-		<div class='row clue-row hide'> 
+		<div class='row'>
 			<div class='col s12 error-col'>
-				<div class='card white black-text'>
-					<div class='card-content'>
+				<br/>
+				<div class='card grey darken-1 white-text'>
+					<div class='card-content center-align'>
 						<h5><b>Game Over!</b> You placed <b id='points'></b> events correctly.</h5>
 					</div>
-					<div class='card-action right-align'>
-						<a class='btn green white-text' id='newgame'>
+					<div class='card-action center-align'>
+						<a class='btn white black-text' id='newgame'>
 							<i class='material-icons left'>refresh</i>
 							Play Again
 						</a>
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class='row'>
 			<div class='col s12 high-col'> 
 			</div>
-			<div class='col s10 m10 l11 question-col'>
+		</div>
+
+		<div class='row'>
+			<div class='col s6 grey-text marks-col'>
+				<br/>
+				Place the historical event in the timeline
 			</div>
-			<div class='col s2 m2 l1 strikes-col'>
-				<div class='strikes'>
-					<i class='material-icons green-text'>favorite</i> <br/>
-					<i class='material-icons green-text'>favorite</i> <br/>
-					<i class='material-icons green-text'>favorite</i> <br/>
+			<div class='col s6 strikes-col'>
+				<div class='right strikes'>
+					<i class='material-icons small green-text'></i> 
+					<i class='material-icons small green-text'></i> 
+					<i class='material-icons small green-text'></i> 
 				</div>
+			</div>
+		</div>
+
+		<div class='row clue-row hide'> 
+			<div class='col s12 question-col'>
 			</div>
 		</div>
 
@@ -71,9 +87,6 @@
 
 	<script type="text/template" id="question_template">
 		<div class='card white question' data-year="<%=year%>">
-			<div class='card-content green lighten-3 white-text marks'>
-				Place the historical event in the timeline
-			</div>
 			<div class='card-content white black-text event'>
 				<%=event%>
 			</div>
