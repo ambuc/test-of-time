@@ -1,16 +1,16 @@
 html{
-	font-family: 'Gentium Book Basic', serif;
-	font-size: 1.1em;
-	background-color: #efefef;
-	/*background-color: #e8f5e9;*/
+    font-family: 'Gentium Book Basic', serif;
+    font-size: 1.1em;
+    background-color: #efefef;
+    /*background-color: #e8f5e9;*/
 }
 h1{
-	font-size: 1.6em !important;
-	text-transform: small-caps;
-	font-family: 'Cinzel Decorative', cursive;
-	font-weight: 900;
-	margin-bottom:0px;
-	padding-bottom:0px;
+    font-size: 1.6em !important;
+    text-transform: small-caps;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 900;
+    margin-bottom:0px;
+    padding-bottom:0px;
 }
 
 .row{ margin-bottom:0px; }
@@ -29,32 +29,32 @@ h1{
 /*LARGE TIMELINE*/
 
 /*no gap when cards wrap*/
-	#large-timeline .card{ margin-bottom:0px;  padding-bottom:0px; }
-	
-	#large-timeline .el{
-		vertical-align: top;
-		display: inline-block;
-		height: 150px;
-		width: auto;
-		max-width: 200px;
-	}
-	
-	#large-timeline a.possibility .card-content{ padding:1px !important; cursor: pointer; }
+    #large-timeline .card{ margin-bottom:0px;  padding-bottom:0px; }
 
-	#large-timeline .el.card{ overflow: scroll; }
+    #large-timeline .el{
+        vertical-align: top;
+        display: inline-block;
+        height: 150px;
+        width: auto;
+        max-width: 200px;
+    }
+
+    #large-timeline a.possibility .card-content{ padding:1px !important; cursor: pointer; }
+
+    #large-timeline .el.card{ overflow: scroll; }
 
 /*SMALL TIMELINE*/
-	#small-timeline {
-		margin-top:		20px;
-		margin-bottom:	20px;
-	}
+    #small-timeline {
+        margin-top:     20px;
+        margin-bottom:  20px;
+    }
 
-	/*full-width year boxes*/
-	#small-timeline .el{ padding:0px !important; }
+    /*full-width year boxes*/
+    #small-timeline .el{ padding:0px !important; }
 
-	#small-timeline a.possibility .card-content{ padding:2px !important; margin-top:5px; cursor: pointer; }
+    #small-timeline a.possibility .card-content{ padding:2px !important; margin-top:5px; cursor: pointer; }
 
-	#small-timeline .el.card{ margin:0px; padding-bottom:0px; }
+    #small-timeline .el.card{ margin:0px; padding-bottom:0px; }
 
 
 
