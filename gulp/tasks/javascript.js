@@ -11,7 +11,7 @@ gulp.task('js:dev', () => {
     .pipe(gulp.dest(config.dev.js));
 });
 
-gulp.task('js:dist', () => {
+gulp.task('js:dist', ['js:copy:dist', 'clean:dist'], () => {
   return gulp.src(config.path.js.entry)
     .pipe(jspm())
     .pipe(rename('bundle.js'))
@@ -23,7 +23,7 @@ gulp.task('js:copy:dev', () => {
     .pipe(gulp.dest(config.dev.js));
 });
 
-gulp.task('js:copy:dist', () => {
+gulp.task('js:copy:dist', ['clean:dist'], () => {
   return gulp.src(config.path.js.copy)
     .pipe(gulp.dest(config.dist.js));
 });

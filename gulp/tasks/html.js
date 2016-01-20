@@ -8,7 +8,7 @@ gulp.task('html:dev', () => {
     .pipe(gulp.dest(config.dev.html));
 });
 
-gulp.task('html:dist', () => {
+gulp.task('html:dist', ['clean:dist'], () => {
   return gulp.src(config.path.html.files)
     .pipe(htmlreplace(config.htmlReplace))
     .pipe(gulp.dest(config.dist.html))

@@ -9,6 +9,6 @@ gulp.task('dev', () => {
   gulp.watch(config.path.js.files, ['js:dev']);
 });
 
-gulp.task('dist', ['clean:dist', 'css:dist', 'html:dist', 'js:dist', 'js:copy:dist']);
+gulp.task('dist', ['css:dist', 'html:dist', 'js:dist']);
 
 gulp.task('default', ['dev']);
